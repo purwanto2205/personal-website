@@ -2,37 +2,55 @@ import styled from 'styled-components'
 import { Images } from '../../assets'
 
 const ImageBackground = styled.div`
-  background-image: url(${Images.image1});
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 500px;
+  background-image: url(${(props) => props.images});
+  min-height: ${(props) => props.minHeight + 'px' || '500px'};
 `
 const Container = styled.div`
   align-items: center;
 `
 
-const About = styled.div`
-  width: 60%;
-  align-items: flex-end;
-  display: block;
-  margin-top: 5em;
-  margin-bottom: 5em;
-  margin-left: auto;
-  margin-right: auto;
-  align-self: center;
-  min-height: 500px;
-  background-color: white;
+const Content = styled.div`
+  display: flex;
+  background-color: ${(props) => props.color || 'white'};
 `
 
 const Title = styled.h2`
   text-align: right;
+  font-family: 'Helvetica';
 `
 
 const TextInImage = styled.h2`
   color: white;
-  display: block;
+  letter-spacing: 0.1em;
+  border-width: 1pt;
+  font-family: 'Helvetica';
+  padding: 1ch;
+  border-color: white;
+  border-style: solid;
   text-align: center;
 `
 
-export { TextInImage, Title, About, Container, ImageBackground }
+const ContainText = styled.div`
+  width: 60%;
+  display: flex;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+`
+
+const Text = styled.p`
+  font-family: 'Helvetica';
+  text-align: right;
+`
+
+export { TextInImage, Text, Title, ContainText, Content, Container, ImageBackground }
